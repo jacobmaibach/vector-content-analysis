@@ -1,2 +1,3 @@
 .*
 !.gitignore
+programs/__pycache__
