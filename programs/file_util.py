@@ -1,6 +1,5 @@
 import pathlib
 import glob
-import re
 
 RELATIVE_DIR = str(pathlib.Path(__file__).parents[0].absolute())
 _index_ = RELATIVE_DIR.rfind('/')+1
@@ -44,5 +43,13 @@ class Corpus:
 
     def __iter__(self):
         yield from self.listed
-                
+
+class IndexedCorpus(Corpus):
+    @property
+    def listed(self):
+        if(self._listed is not None):
+            base = self._listed
+        else:
+            base = self._listed_func()
+        return [{'id':i,'content':c} for (i,c) in enumerate(base)]
         
