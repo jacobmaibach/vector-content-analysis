@@ -1,3 +1,5 @@
+import re
+
 from file_util import load_sentences,Corpus
 
 def parse_words(sentence_list):
@@ -20,6 +22,6 @@ def load_pairs(sep = '.',direc = None):
     listed,_ = parse_words(sentences)
     pairs = []
     for row in listed:
-         new = [(row[i-1],row[i]) for i in range(1,len(row))]
+         new = [(row[i-1] + ' ' + row[i]) for i in range(1,len(row))]
          pairs.append(new)
     return Corpus(listed=pairs)

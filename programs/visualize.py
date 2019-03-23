@@ -7,9 +7,6 @@ from model_util import Word2Vec
 from data_util import load_words,load_pairs
 from file_util import OUTPUT_DIR
 
-words_obj = load_words()
-model = Word2Vec(words_obj.listed)
-
 ### rep
 
 def get_word_rep():
